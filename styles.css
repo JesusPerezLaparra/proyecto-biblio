@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+main {
+  width: 100vw;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 16px;
+  }
+
+#busquedaLibro {
+  align-self: center ;
+}
+
+/* 
+.listaDragonBall {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px;
+  gap: 16px;
+  padding: 1px;
+}
+
+h1 {
+  width: 100%;
+ justify-content: center;
+ align-self: center;
+ text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+img {
+  align-self: center;
+  max-height: 250px;
+}
+
+img:hover {
+transform: scale(1.1);
+}
+  
+.personajeDB {
+  background-color: blue;
+  color: white;
+  width: 30%;
+  height: 900px;
+  min-width: 200px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  flex-grow: 1;
+  gap: 16px;
+  padding: 16px;
+  border: solid 1px black;
+}
+
+#busquedaPersonajeDB {
+  width: 100%;
+  padding: 8px;
+  border: solid 1px black;
+  padding: 9px;
+  border-radius: 9px;
+}
+
+#botonpagAnt {
+  background-color: #fbbc42;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#botonpagSig {
+  background-color: #fbbc42;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.menuFiltros {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px;
+  background-color: #fbbc42;
+  border: 1px solid black;
+  border-radius: 15px;
+  max-height: max-content;
+}
+
+select {
+  background-color: #fbbc42;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+}
+
+#filtrosbtn {
+  background-color: #fbbc42;
+  color: black;
+  font-weight: bold;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+#masinfopersonaje {
+  background-color: blue;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+}
+#masinfopersonaje > *{
+  max-width: 500px;
+  max-height: auto;
+}
+
+#masinfopersonaje button  {
+  background-color: #fbbc42;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+} */

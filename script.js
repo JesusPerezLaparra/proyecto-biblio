@@ -7,6 +7,7 @@ const cartList = document.getElementById("cart-list");
 const cartModal = document.getElementById("cartmodal");
 const searchButton = document.getElementById("searchButton");
 const cartheader = document.getElementById("cartheader");
+const btnBuy = document.getElementById("buy");
 
 
 const API_URL = `https://openlibrary.org/search.json?q=${searchParam}`;
@@ -76,6 +77,41 @@ function addToCart(book) {
     const listItem = document.createElement("li");
     listItem.textContent = book.title;
 
+    const quantityContainer = document.createElement("div");
+    quantityContainer.style.display = "flex";
+    quantityContainer.style.alignItems = "center";
+    quantityContainer.style.gap = "10px";
+
+    const minusButton = document.createElement("button");
+    minusButton.textContent = "-";
+    minusButton.addEventListener("click", () => {
+        const currentQuantity = parseInt(quantitySpan.textContent, 10);
+        if (currentQuantity > 1) {
+            quantitySpan.textContent = currentQuantity - 1;
+        } else {
+            const index = books.indexOf(book);
+            if (index > -1) {
+                books.splice(index, 1);
+                cartCount.textContent = books.length;
+                listItem.remove();
+            }
+        }
+    });
+
+    const quantitySpan = document.createElement("span");
+    quantitySpan.textContent = "1";
+
+    const plusButton = document.createElement("button");
+    plusButton.textContent = "+";
+    plusButton.addEventListener("click", () => {
+        const currentQuantity = parseInt(quantitySpan.textContent, 10);
+        quantitySpan.textContent = currentQuantity + 1;
+    });
+
+    quantityContainer.appendChild(minusButton);
+    quantityContainer.appendChild(quantitySpan);
+    quantityContainer.appendChild(plusButton);
+
     const deleteIcon = document.createElement("span");
     deleteIcon.innerHTML = '<i class="fa-solid fa-trash"></i>';
     deleteIcon.style.cursor = "pointer";
@@ -86,21 +122,25 @@ function addToCart(book) {
             cartCount.textContent = books.length;
             listItem.remove();
         }
-
     });
 
+    listItem.appendChild(quantityContainer);
     listItem.appendChild(deleteIcon);
     cartList.appendChild(listItem);
     cartCount.textContent = books.length;
 
     if (books.length > 0) {
-        cartheader.style.display = "block"; // Show cart header if items exist
+        cartheader.style.display = "block";
     }
 }
 
 btnCart.addEventListener("click", () => {
     cartModal.style.display = cartModal.style.display === "block" ? "none" : "block";
 });
+
+btnBuy.addEventListener("click", () => {
+    alert("Compra realizada con éxito!");
+})
     
 
 showBooks();

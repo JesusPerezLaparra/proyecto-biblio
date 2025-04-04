@@ -60,9 +60,12 @@
 }
 
 #cart {
+  width: 20px;
   text-align: right;
   font-size: 20px;
-  position: relative;
+  position: absolute;
+  right: 30px;
+
 }
 
 #cart-button {
@@ -112,4 +115,40 @@
 #cart-list li {
   display: flex;
   justify-content: space-between;
-  }
+}
+.main-article {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.search-container {
+  width: 300px;
+  justify-content: center;
+  margin: 20px 0;
+}
+.search-container input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.search-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.books-container {
+width: 100%;
+}
+.navbar {
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

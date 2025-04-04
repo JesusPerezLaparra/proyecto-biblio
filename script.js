@@ -1,12 +1,9 @@
 const botonbusquedaLibro = document.getElementById("busquedaLibro");
 let searchParam = "tolkien";
 const books = [];
-const cartCount = document.getElementById("cart-count");
 const btnCart = document.getElementById("cart");
-const cartList = document.getElementById("cart-list");
 const cartModal = document.getElementById("cartmodal");
 const searchButton = document.getElementById("searchButton");
-const cartheader = document.getElementById("cartheader");
 const btnBuy = document.getElementById("buy");
 
 
@@ -18,13 +15,13 @@ let pages = {
     next: "",
 };
 
-const booksGrid = document.getElementById("booksGrid"); 
+const booksGrid = document.getElementById("booksGrid");
 
 function showBooks() {
     fetch(pages.current)
         .then((response) => response.json())
         .then((data) => {
-            booksGrid.innerHTML = ""; 
+            booksGrid.innerHTML = "";
             data.docs.forEach((book) => {
                 const card = document.createElement("div");
                 card.classList.add("book-card");
@@ -32,7 +29,7 @@ function showBooks() {
                 const img = document.createElement("img");
                 img.src = book.cover_i
                     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-                    : "https://via.placeholder.com/150"; 
+                    : "https://via.placeholder.com/150";
                 img.alt = book.title;
 
                 const title = document.createElement("h3");
@@ -65,8 +62,17 @@ function showBooks() {
 }
 
 function searchBooks() {
-    searchParam = document.getElementById("busquedaLibro").value; 
-    pages.current = `https://openlibrary.org/search.json?title=${searchParam}&limit=10`;
+    const searchInput = document.getElementById("busquedaLibro").value;
+    const filter = document.getElementById("filtro").value;
+
+    if (filter === "titulo") {
+        searchParam = searchInput;
+        pages.current = `https://openlibrary.org/search.json?title=${searchParam}&limit=10`;
+    } else if (filter === "autor") {
+        searchParam = searchInput;
+        pages.current = `https://openlibrary.org/search.json?author=${searchParam}&limit=10`;
+    }
+
     showBooks();
 }
 
@@ -74,6 +80,8 @@ searchButton.addEventListener("click", searchBooks);
 
 function addToCart(book) {
     books.push(book);
+    updateCartUI();
+
     const listItem = document.createElement("li");
     listItem.textContent = book.title;
 
@@ -92,8 +100,8 @@ function addToCart(book) {
             const index = books.indexOf(book);
             if (index > -1) {
                 books.splice(index, 1);
-                cartCount.textContent = books.length;
                 listItem.remove();
+                updateCartUI();
             }
         }
     });
@@ -119,20 +127,35 @@ function addToCart(book) {
         const index = books.indexOf(book);
         if (index > -1) {
             books.splice(index, 1);
-            cartCount.textContent = books.length;
             listItem.remove();
+            updateCartUI();
         }
     });
 
     listItem.appendChild(quantityContainer);
     listItem.appendChild(deleteIcon);
-    cartList.appendChild(listItem);
-    cartCount.textContent = books.length;
+    document.getElementById("cart-list").appendChild(listItem);
+}
 
-    if (books.length > 0) {
+function updateCartUI() {
+    const cartList = document.getElementById("cart-list");
+    const cartheader = document.getElementById("cartheader");
+    const buyButton = document.getElementById("buy");
+    const cartCount = document.getElementById("cart-count");
+
+    cartCount.textContent = books.length; // Actualiza el contador de artículos en el carrito
+
+    if (books.length === 0) {
+        cartheader.style.display = "none";
+    } else {
         cartheader.style.display = "block";
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateCartUI();
+});
+
 
 btnCart.addEventListener("click", () => {
     cartModal.style.display = cartModal.style.display === "block" ? "none" : "block";
@@ -141,6 +164,6 @@ btnCart.addEventListener("click", () => {
 btnBuy.addEventListener("click", () => {
     alert("Compra realizada con éxito!");
 })
-    
+
 
 showBooks();

@@ -1,6 +1,13 @@
 const botonbusquedaLibro = document.getElementById("busquedaLibro");
 let searchParam = "tolkien";
 const books = [];
+const cartCount = document.getElementById("cart-count");
+const btnCart = document.getElementById("cart");
+const cartList = document.getElementById("cart-list");
+const cartModal = document.getElementById("cartmodal");
+const searchButton = document.getElementById("searchButton");
+const cartheader = document.getElementById("cartheader");
+
 
 const API_URL = `https://openlibrary.org/search.json?q=${searchParam}`;
 
@@ -56,10 +63,44 @@ function showBooks() {
         });
 }
 
-function addToCart(book) {
-    console.log(`Libro agregado al carrito: ${book.title}`);
+function searchBooks() {
+    searchParam = document.getElementById("busquedaLibro").value; 
+    pages.current = `https://openlibrary.org/search.json?title=${searchParam}&limit=10`;
+    showBooks();
 }
 
+searchButton.addEventListener("click", searchBooks);
+
+function addToCart(book) {
+    books.push(book);
+    const listItem = document.createElement("li");
+    listItem.textContent = book.title;
+
+    const deleteIcon = document.createElement("span");
+    deleteIcon.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    deleteIcon.style.cursor = "pointer";
+    deleteIcon.addEventListener("click", () => {
+        const index = books.indexOf(book);
+        if (index > -1) {
+            books.splice(index, 1);
+            cartCount.textContent = books.length;
+            listItem.remove();
+        }
+
+    });
+
+    listItem.appendChild(deleteIcon);
+    cartList.appendChild(listItem);
+    cartCount.textContent = books.length;
+
+    if (books.length > 0) {
+        cartheader.style.display = "block"; // Show cart header if items exist
+    }
+}
+
+btnCart.addEventListener("click", () => {
+    cartModal.style.display = cartModal.style.display === "block" ? "none" : "block";
+});
+    
+
 showBooks();
-
-

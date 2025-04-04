@@ -1,147 +1,60 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
 }
 
-body {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
+.book-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-main {
-  width: 100vw;
-
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  padding: 16px;
-  gap: 16px;
-  }
-
-#busquedaLibro {
-  align-self: center ;
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* 
-.listaDragonBall {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin: 20px;
-  gap: 16px;
-  padding: 1px;
-}
-
-h1 {
+.book-card img {
   width: 100%;
- justify-content: center;
- align-self: center;
- text-align: center;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
 }
 
-p {
+.book-card h3 {
+  font-size: 1.2em;
+  margin: 15px 10px 5px;
+  color: #333;
   text-align: center;
 }
 
-img {
-  align-self: center;
-  max-height: 250px;
-}
-
-img:hover {
-transform: scale(1.1);
-}
-  
-.personajeDB {
-  background-color: blue;
-  color: white;
-  width: 30%;
-  height: 900px;
-  min-width: 200px;
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  align-items: space-evenly;
-  flex-grow: 1;
-  gap: 16px;
-  padding: 16px;
-  border: solid 1px black;
-}
-
-#busquedaPersonajeDB {
-  width: 100%;
-  padding: 8px;
-  border: solid 1px black;
-  padding: 9px;
-  border-radius: 9px;
-}
-
-#botonpagAnt {
-  background-color: #fbbc42;
-  color: black;
-  font-weight: bold;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-}
-
-#botonpagSig {
-  background-color: #fbbc42;
-  color: black;
-  font-weight: bold;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-}
-
-.menuFiltros {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-  background-color: #fbbc42;
-  border: 1px solid black;
-  border-radius: 15px;
-  max-height: max-content;
-}
-
-select {
-  background-color: #fbbc42;
-  color: black;
-  font-weight: bold;
-  padding: 10px 15px;
-  border: none;
-}
-
-#filtrosbtn {
-  background-color: #fbbc42;
-  color: black;
-  font-weight: bold;
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-}
-
-#masinfopersonaje {
-  background-color: blue;
-  color: white;
-  border-radius: 20px;
+.book-card p {
+  margin: 5px 10px;
+  font-size: 0.9em;
+  color: #555;
   text-align: center;
 }
-#masinfopersonaje > *{
-  max-width: 500px;
-  max-height: auto;
-}
 
-#masinfopersonaje button  {
-  background-color: #fbbc42;
-  color: black;
-  font-weight: bold;
+.book-card button {
+  display: block;
+  width: calc(100% - 20px);
+  margin: 10px auto;
   padding: 10px;
-} */
+  font-size: 1em;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.book-card button:hover {
+  background-color: #0056b3;
+}

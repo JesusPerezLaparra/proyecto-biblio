@@ -160,13 +160,17 @@ function updateCartUI() {
     const cartheader = document.getElementById("cartheader");
     const buyButton = document.getElementById("buy");
     const cartCount = document.getElementById("cart-count");
+    const cartBuyMessage = document.getElementById("cart-buy-message");
+    const cartMessage = document.getElementById("cart-message");
 
     cartCount.textContent = books.length; // Actualiza el contador de artículos en el carrito
 
     if (books.length === 0) {
-        cartheader.style.display = "none";
+        cartBuyMessage.style.display = "none";
+        cartMessage.style.display = "block";
     } else {
-        cartheader.style.display = "block";
+        cartBuyMessage.style.display = "block";
+        cartMessage.style.display = "none";
     }
 }
 

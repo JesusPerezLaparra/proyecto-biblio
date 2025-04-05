@@ -83,12 +83,28 @@ function addToCart(book) {
     updateCartUI();
 
     const listItem = document.createElement("li");
-    listItem.textContent = book.title;
+    listItem.style.display = "flex";
+    listItem.style.justifyContent = "space-between";
+    listItem.style.alignItems = "center";
+
+    const img = document.createElement("img");
+    img.src = book.cover_i
+        ? `https://covers.openlibrary.org/b/id/${book.cover_i}-S.jpg`
+        : "https://via.placeholder.com/50";
+    img.alt = book.title;
+    img.style.width = "50px";
+    img.style.height = "auto";
+    img.style.marginRight = "10px";
+
+    const titleSpan = document.createElement("span");
+    titleSpan.textContent = book.title;
 
     const quantityContainer = document.createElement("div");
     quantityContainer.style.display = "flex";
     quantityContainer.style.alignItems = "center";
     quantityContainer.style.gap = "10px";
+    quantityContainer.style.marginLeft = "auto";
+    quantityContainer.style.marginInlineEnd = "5px";
 
     const minusButton = document.createElement("button");
     minusButton.textContent = "-";
@@ -132,6 +148,8 @@ function addToCart(book) {
         }
     });
 
+    listItem.appendChild(img);
+    listItem.appendChild(titleSpan);
     listItem.appendChild(quantityContainer);
     listItem.appendChild(deleteIcon);
     document.getElementById("cart-list").appendChild(listItem);

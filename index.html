@@ -5,18 +5,57 @@
         <meta name="viewport" content="width=device-width" />
         <title>Proyecto Biblioteca</title>
         <link href="./styles.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-        <main>
-            <h1>Biblio proyecto</h1>
+
+        <div id="photos">
+                          <img src="./mago.jpg" id="mago" />
+                        <img src="./logo-web.png" id="logo" />
+            </div>
+            <div id="search">
             <input
-                type="search"
-                id="busquedaLibro"
-                placeholder="Busca un libro"
-            />
-            <button id="searchButton" onclick="searchBooks()">Buscar </button>
-            <div id="booksGrid" class="books-grid"></div>
+            type="search"
+            id="busquedaLibro"
+            placeholder="Busca un libro"
+        />
+        <button type="button" id="searchButton">Buscar </button>
+        </div>
+            <div id="cart" class="cart-container">
+                <button id="cart-button" class="cart-button">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
+            </div>
+
+
+            <article class="main-article">
+                <section class="search-container">
+                    <input type="search" id="busquedaLibro" placeholder="Busca un libro" />
+                    <select id="filtro" class="filtro">
+                        <option value="titulo">Título</option>
+                        <option value="autor">Autor</option>
+                    </select>
+                    <button type="button" id="searchButton">Buscar </button>
+                </section>
+                <section class="books-container">
+                    <div id="booksGrid" class="books-grid"></div>
+                                <div id="booksGrid" class="books-grid"></div>
+                </section>
+            </article>
         </main>
+        <div id="cartmodal">
+            <div id="cartheader">
+                <h2>Carrito de compras</h2>
+                <div id="cart-message">
+                    <p id="cart-empty-message">El carrito está vacío</p>
+                </div>
+                <div id="cart-buy-message">
+                    <ul id="cart-list">
+                </ul>
+                <button id="buy" type="button">Comprar</button>
+                </div>
+            </div>
         <script src="./script.js"></script>
     </body>
 </html>
